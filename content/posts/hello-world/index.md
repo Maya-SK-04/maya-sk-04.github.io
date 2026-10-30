@@ -4,6 +4,12 @@ draft = false
 title = 'Hello World: Why I Started Writing About Security'
 description = 'What this blog is about, who it is for, and what to expect.'
 tags = ['about', 'cybersecurity']
+
+[cover]
+  image = 'cover.jpg'
+  alt = 'A notebook and pen on a wooden desk'
+  caption = ''
+  relative = true
 +++
 
 Most security failures I come across aren't dramatic. Nobody in a hoodie is typing furiously in a dark room. It's a password on a sticky note. An old account nobody switched off. Someone who clicked the link they *knew* they shouldn't.

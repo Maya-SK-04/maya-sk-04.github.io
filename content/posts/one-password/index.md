@@ -9,7 +9,7 @@ featured = true
 
 [cover]
   image = 'cover.jpg'
-  alt = 'Describe the picture in one sentence'
+  alt = 'S A F E T Y'
   caption = ''
   relative = true
 +++
@@ -68,11 +68,11 @@ None of this is glamorous. It's like leaving for work on time. Nobody congratula
 
 Security works the same way. If you're not disciplined, expect disaster.
 
-## The Seculens takeaway
+## The takeaway
 
 **Attackers rarely break in. They log in.** Tools help, but discipline decides: who has access, how they prove it's really them, and how quickly you take it away when they no longer need it.
 
-> *Through the Seculens lens: cybersecurity isn't simply about preventing attacks. It's about understanding the risks that come with operating in a digital world.*
+> *Through Maya's lens: cybersecurity isn't simply about preventing attacks. It's about understanding the risks that come with operating in a digital world.*
 
 **Let's talk about it.** Why do you think organizations buy tools before they fix the basics? Is the industry overcomplicating security, or are we just drawn to things we can see? I'd genuinely like to hear your take. Find me on LinkedIn or get in touch.
 
