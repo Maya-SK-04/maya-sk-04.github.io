@@ -15,6 +15,10 @@ theme = 'PaperMod'
   [params.homeInfoParams]
     Title = "See Beyond the Surface"
     Content = "Notes by Maya helps organizations and people see the cyber risks hiding in plain sight, explained in plain language so everyone can make better decisions."
+    Role = "Technical Consultant"
+    Credentials = ["CompTIA A+", "CompTIA Security+", "CompTIA PenTest+", "CompTIA SecurityX (formerly CASP+)", "Check Point CCSA R81"]
+    Image = "/images/hero.jpg"
+    ImageAlt = "Abstract overlapping circles in black and white"
 [[menus.main]]
   name = 'Posts'
   pageRef = '/posts'
