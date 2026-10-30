@@ -1,0 +1,86 @@
+{{- define "main" }}
+
+{{- /* All posts that may appear on the home page */}}
+{{- $posts := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $posts = where $posts "Params.hiddenInHomeList" "!=" "true" }}
+
+{{- /* The lead story: the post marked featured = true, or the newest post if none is marked */}}
+{{- $featured := where $posts "Params.featured" true }}
+{{- $lead := false }}
+{{- if $posts }}
+  {{- $lead = index ($featured | default $posts) 0 }}
+{{- end }}
+
+{{- /* Every other post goes in the list underneath */}}
+{{- $rest := $posts }}
+{{- if $lead }}
+  {{- $rest = where $posts "Permalink" "ne" $lead.Permalink }}
+{{- end }}
+{{- $paginator := .Paginate $rest }}
+
+{{- if eq $paginator.PageNumber 1 }}
+
+{{- /* 1. Introduction (text comes from hugo.toml) */}}
+{{- with site.Params.homeInfoParams }}
+<section class="intro">
+  <h1>{{ .Title | markdownify }}</h1>
+  <p>{{ .Content | markdownify }}</p>
+</section>
+{{- end }}
+
+{{- /* 2. The lead story */}}
+{{- with $lead }}
+{{- with site.Params.leadIn }}
+<p class="lead-in">{{ . }}</p>
+{{- end }}
+<article class="lead">
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" false) }}
+  <header class="entry-header">
+    <h2>{{ .Title }}</h2>
+  </header>
+  {{- with .Description }}
+  <p class="lead-desc">{{ . }}</p>
+  {{- end }}
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+  </footer>
+  <a class="entry-link" aria-label="Read {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+
+{{- if $paginator.Pages }}
+<h2 class="list-heading">More stories</h2>
+{{- end }}
+{{- end }}{{/* end first page only */}}
+
+{{- /* 3. The rest of the posts */}}
+{{- range $paginator.Pages }}
+<article class="post-entry">
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" false) }}
+  <header class="entry-header">
+    <h2>{{ .Title }}</h2>
+  </header>
+  <div class="entry-content">
+    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+  </div>
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+  </footer>
+  <a class="entry-link" aria-label="Read {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">&laquo;&nbsp;Previous</a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">Next&nbsp;&raquo;</a>
+    {{- end }}
+  </nav>
+</footer>
+{{- end }}
+
+{{- end }}{{- /* end main */ -}}

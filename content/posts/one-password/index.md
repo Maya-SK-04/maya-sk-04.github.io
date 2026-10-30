@@ -4,6 +4,7 @@ date = 2026-10-30
 draft = false
 description = "Most breaches come down to access, and discipline beats expensive tools."
 tags = ['access control', 'passwords', 'organizations']
+featured = true
 
 
 [cover]

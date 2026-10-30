@@ -1,6 +1,6 @@
-baseURL = 'https://techstoriesbymaya.org/'
+baseURL = 'https://notesbymaya.org/'
 locale = 'en-us'
-title = 'My Security Stories'
+title = 'Notes by Maya'
 theme = 'PaperMod'
 
 [params]
@@ -10,17 +10,17 @@ theme = 'PaperMod'
   ShowPostNavLinks = true
   disableThemeToggle = true
   author = "Maya Kamsesa"
+  leadIn = "New here? Start with the question I keep coming back to."
 
   [params.homeInfoParams]
-    Title = "Hi, I'm Maya 👋"
-    Content = "I'm a cybersecurity consultant. I write about what I learn, and why security matters for organizations and for everyday life."
-
+    Title = "See Beyond the Surface"
+    Content = "Notes by Maya helps organizations and people see the cyber risks hiding in plain sight, explained in plain language so everyone can make better decisions."
 [[menus.main]]
   name = 'Posts'
   pageRef = '/posts'
   weight = 10
 
-[[menus.main]]
-  name = 'About'
-  pageRef = '/about'
-  weight = 20
+#[[menus.main]]
+ # name = 'About'
+ # pageRef = '/about'
+#weight = 20
