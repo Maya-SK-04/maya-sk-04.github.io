@@ -1,0 +1,28 @@
+/* My brand color, stored in a variable */
+:root {
+  --brand: #0f766e;
+}
+
+/* A lighter version of the color for dark mode */
+body.dark {
+  --brand: #5eead4;
+}
+
+/* Make the site name stand out */
+.logo a {
+  color: var(--brand);
+  font-weight: 700;
+}
+
+/* Links inside posts use the brand color */
+.post-content a {
+  color: var(--brand);
+}
+
+/* Post cards lift slightly when hovered */
+.post-entry {
+  transition: transform 0.15s ease;
+}
+.post-entry:hover {
+  transform: translateY(-3px);
+}
