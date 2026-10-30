@@ -1,28 +1,460 @@
-/* My brand color, stored in a variable */
+/* ==========================================================
+   Medium-style black and white for PaperMod
+   File: assets/css/extended/custom.css
+   ========================================================== */
+ 
+/* ---------- 1. Colors, fonts and widths (change them here) ---------- */
 :root {
-  --brand: #0f766e;
+  /* Fonts: system fonts only, so nothing is loaded from other websites */
+  --serif: Charter, "Bitstream Charter", "Iowan Old Style", "Sitka Text", Cambria, Georgia, serif;
+  --ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+ 
+  /* PaperMod's own variables, set to black and white */
+  --theme: #ffffff;
+  --entry: #ffffff;
+  --primary: #242424;
+  --content: #242424;
+  --secondary: #6b6b6b;
+  --tertiary: #e6e6e6;
+  --border: #e6e6e6;
+  --code-bg: #f2f2f2;
+  --radius: 4px;
+ 
+  /* Widths: articles are narrow like Medium, the top bar is wider */
+  --main-width: 680px;
+  --nav-width: 1080px;
 }
-
-/* A lighter version of the color for dark mode */
-body.dark {
-  --brand: #5eead4;
+ 
+body {
+  font-family: var(--serif);
+  background: var(--theme);
+  color: var(--content);
+  -webkit-font-smoothing: antialiased;
 }
-
-/* Make the site name stand out */
+ 
+/* PaperMod paints list pages (the home page and Posts) light grey. Keep them white. */
+.list {
+  background: var(--theme);
+}
+ 
+/* Everything that is "interface" uses the sans-serif font */
+.header,
+.footer,
+.post-title,
+.post-meta,
+.page-header,
+.entry-header,
+.entry-footer,
+.post-tags,
+.pagination,
+.paginav,
+.breadcrumbs,
+figcaption,
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  font-family: var(--ui);
+}
+ 
+a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+ 
+/* ---------- 2. Top bar ---------- */
+.header {
+  border-bottom: 1px solid var(--border);
+}
+ 
 .logo a {
-  color: var(--brand);
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+}
+ 
+#menu a {
+  font-size: 0.9rem;
+  color: var(--secondary);
+}
+ 
+#menu a:hover,
+#menu .active {
+  color: var(--primary);
+}
+ 
+/* ---------- 3. Home page intro ---------- */
+.first-entry {
+  min-height: 0;
+  margin: 56px 0 0;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+ 
+.first-entry .entry-header h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+ 
+.first-entry .entry-content {
+  margin: 14px 0 0;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--secondary);
+}
+ 
+/* ---------- 4. Post list: text on the left, picture on the right ---------- */
+.post-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  column-gap: 32px;
+  align-items: start;
+  margin: 0;
+  padding: 32px 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+}
+ 
+.post-entry:active {
+  transform: none;
+}
+ 
+/* No picture? Let the text use the full width */
+.post-entry:not(:has(.entry-cover)) {
+  grid-template-columns: minmax(0, 1fr);
+}
+ 
+.post-entry > * {
+  grid-column: 1;
+}
+ 
+.post-entry .entry-cover {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  margin: 0;
+}
+ 
+.post-entry .entry-cover img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius);
+  /* Want every picture in black and white? Remove the two slashes and stars around the next line: */
+  /* filter: grayscale(100%); */
+}
+ 
+.post-entry .entry-header h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+ 
+.post-entry:hover .entry-header h2 {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+ 
+.post-entry .entry-content {
+  margin: 8px 0 0;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--secondary);
+  /*-webkit-line-clamp: 3;*/
+}
+ 
+.post-entry .entry-footer {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--secondary);
+}
+ 
+/* ---------- 5. Article page ---------- */
+.post-header {
+  margin: 48px 0 32px;
+}
+ 
+.post-title {
+  font-size: clamp(2rem, 5.5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+ 
+.post-description {
+  margin: 16px 0 0;
+  font-family: var(--ui);
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: var(--secondary);
+}
+ 
+.post-meta {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: var(--secondary);
+}
+ 
+/* Cover picture at the top of an article */
+.post-single .entry-cover {
+  margin: 0 0 2.5rem;
+}
+ 
+.post-single .entry-cover img {
+  border-radius: 2px;
+}
+ 
+/* The writing itself */
+.post-content {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--content);
+}
+ 
+.post-content p {
+  margin: 0 0 1.5rem;
+}
+ 
+.post-content h2 {
+  margin: 3rem 0 1rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+ 
+.post-content h3 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+ 
+.post-content ul,
+.post-content ol {
+  margin: 0 0 1.5rem;
+  padding-inline-start: 1.5rem;
+}
+ 
+.post-content li {
+  margin-bottom: 0.5rem;
+}
+ 
+.post-content a {
+  color: inherit;
+  box-shadow: 0 1px 0;
+}
+ 
+.post-content blockquote {
+  margin: 2.5rem 0;
+  padding: 0 0 0 1.5rem;
+  border-inline-start: 3px solid var(--primary);
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+ 
+.post-content blockquote p {
+  margin: 0;
+}
+ 
+/* Pictures inside an article */
+.post-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2.5rem auto;
+  border-radius: 2px;
+}
+ 
+.post-content figcaption {
+  margin-top: -1.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--secondary);
+}
+ 
+/* Tags as pills */
+.post-tags a {
+  border-radius: 999px;
+  padding: 0 16px;
+  font-size: 0.85rem;
+  color: var(--primary);
+}
+ 
+/* ---------- 6. Footer ---------- */
+.footer {
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+ 
+/* ---------- 7. Landing page: intro, lead story, list ---------- */
+.intro {
+  margin: 56px 0 0;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+ 
+.intro h1 {
+  margin: 0;
+  font-family: var(--ui);
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+ 
+.intro p {
+  margin: 14px 0 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--secondary);
+}
+ 
+/* The sentence that leads the reader into the first story */
+.lead-in {
+  margin: 40px 0 20px;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--secondary);
+}
+ 
+.lead {
+  position: relative;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+ 
+.lead .entry-cover {
+  margin: 0 0 24px;
+}
+ 
+.lead .entry-cover img {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+   filter: grayscale(100%); 
+}
+ 
+.lead .entry-header h2 {
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+ 
+.lead:hover .entry-header h2 {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+ 
+.lead-desc {
+  margin: 12px 0 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--secondary);
+}
+ 
+.lead .entry-footer {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--secondary);
+}
+ 
+.list-heading {
+  margin: 40px 0 0;
+  font-family: var(--ui);
+  font-size: 1rem;
   font-weight: 700;
 }
-
-/* Links inside posts use the brand color */
-.post-content a {
-  color: var(--brand);
+ 
+/* ---------- 8. Phones ---------- */
+@media (max-width: 600px) {
+  .intro {
+    margin-top: 32px;
+    padding-bottom: 28px;
+  }
+ 
+  .intro h1 {
+    font-size: 2rem;
+  }
+ 
+  .intro p {
+    font-size: 1.05rem;
+  }
+ 
+  .lead-in {
+    margin: 28px 0 16px;
+    font-size: 1.05rem;
+  }
+ 
+  .lead {
+    padding-bottom: 28px;
+  }
+ 
+  .lead .entry-cover img {
+    aspect-ratio: 3 / 2;
+  }
+ 
+  .lead-desc {
+    font-size: 1.05rem;
+  }
+ 
+  .first-entry {
+    margin-top: 32px;
+  }
+ 
+  .first-entry .entry-header h1 {
+    font-size: 2rem;
+  }
+ 
+  .first-entry .entry-content {
+    font-size: 1.05rem;
+  }
+ 
+  .post-entry {
+    grid-template-columns: minmax(0, 1fr) 96px;
+    column-gap: 16px;
+    padding: 24px 0;
+  }
+ 
+  .post-entry .entry-header h2 {
+    font-size: 1.15rem;
+  }
+ 
+  .post-entry .entry-content {
+    font-size: 0.95rem;
+    /*-webkit-line-clamp: 2;*/
+  }
+ 
+  .post-header {
+    margin-top: 32px;
+  }
+ 
+  .post-description {
+    font-size: 1.1rem;
+  }
+ 
+  .post-content {
+    font-size: 1.125rem;
+  }
+ 
+  .post-content h2 {
+    font-size: 1.5rem;
+  }
+ 
+  .post-content blockquote {
+    font-size: 1.2rem;
+  }
 }
-
-/* Post cards lift slightly when hovered */
-.post-entry {
-  transition: transform 0.15s ease;
-}
-.post-entry:hover {
-  transform: translateY(-3px);
-}
+ 
