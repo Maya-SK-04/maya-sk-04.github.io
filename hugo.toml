@@ -1,0 +1,4 @@
+baseURL = 'https://techstoriesbymaya.org/'
+locale = 'en-us'
+title = 'My Security Stories'
+theme = 'PaperMod'
