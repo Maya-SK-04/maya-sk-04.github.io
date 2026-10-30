@@ -2,3 +2,23 @@ baseURL = 'https://techstoriesbymaya.org/'
 locale = 'en-us'
 title = 'My Security Stories'
 theme = 'PaperMod'
+
+[params]
+  description = "Cybersecurity, explained through stories."
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+
+  [params.homeInfoParams]
+    Title = "Hi, I'm Maya 👋"
+    Content = "I'm a cybersecurity consultant. I write about what I learn, and why security matters for organizations and for everyday life."
+
+[[menus.main]]
+  name = 'Posts'
+  pageRef = '/posts'
+  weight = 10
+
+[[menus.main]]
+  name = 'About'
+  pageRef = '/about'
+  weight = 20
