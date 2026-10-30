@@ -5,9 +5,11 @@ theme = 'PaperMod'
 
 [params]
   description = "Cybersecurity, explained through stories."
-  defaultTheme = "auto"
+  defaultTheme = "light"
   ShowReadingTime = true
   ShowPostNavLinks = true
+  disableThemeToggle = true
+  author = "Maya Kamsesa"
 
   [params.homeInfoParams]
     Title = "Hi, I'm Maya 👋"
