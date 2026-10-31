@@ -32,6 +32,9 @@ I also think security is explained badly. It's either buried in jargon or wrappe
 ## Let's talk
 
 This isn't meant to be a one-way conversation. If something here makes you think, disagree, or remember a story of your own, I'd love to hear it. Find me on LinkedIn or get in touch.
+www.linkedin.com/in/maya-kamsesa-11b426381
+
+
 
 First up: **Your Business Is Digital. But Is It Secure?**
 
